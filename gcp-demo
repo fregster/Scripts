@@ -9,3 +9,7 @@ sudo cp loaddatastore.php /usr/share/nginx/html/
 sudo cp loaddatastore.sh /usr/share/nginx/html/
 sudo cp products.json /usr/share/nginx/html/
 cd ~
+cd /usr/share/nginx/html/ 
+sudo curl -sS https://getcomposer.org/installer | php
+sudo php composer.phar require google/auth
+sudo php composer.phar require google/cloud
