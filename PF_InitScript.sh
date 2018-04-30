@@ -43,7 +43,7 @@ cd ~
 # Config the webserver
 
 sudo rm /etc/nginx/default.d/php.conf
-wget https://raw.githubusercontent.com/fregster/Scripts/master/php.conf
+sudo wget https://raw.githubusercontent.com/fregster/Scripts/master/php.conf
 sudo mv php.conf /etc/nginx/default.d/
 
 
