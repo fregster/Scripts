@@ -2,8 +2,10 @@ sudo yum install -y git
 rm -rf git && mkdir git
 cd git
 git clone https://github.com/kbxkb/google-cloud-datastore-php.git
+cd ~/git/google-cloud-datastore-php
 cp calldatastore.php /usr/share/nginx/html/
 cp form.html /usr/share/nginx/html/
 cp loaddatastore.php /usr/share/nginx/html/
 cp loaddatastore.sh /usr/share/nginx/html/
 cp products.json /usr/share/nginx/html/
+cd ~
