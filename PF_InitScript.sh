@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 # To install the Stackdriver monitoring agent:
@@ -33,12 +32,27 @@ sudo yum install -y nano wget unzip
 
 # Download healthcheck and enable
 cd ~
-curl -sSO https://github.com/fregster/PHPHealthcheck/archive/master.zip
+wget https://github.com/fregster/PHPHealthcheck/archive/master.zip
 rm -rf ~/healthcheck
 mkdir healthcheck
 mv ./master.zip ./healthcheck
-cd healthcheck && unzip master.zip
+sudo rm -rf /usr/share/nginx/html/PHPHealthcheck-master/
+cd healthcheck && unzip master.zip && sudo chown -R php-fpm:php-fpm ./PHPHealthcheck-master/ && sudo mv PHPHealthcheck-master/ /usr/share/nginx/html/
 cd ~
+
+# Config the webserver
+
+sudo rm /etc/nginx/default.d/php.conf
+sudo echo "# Pass PHP scripts to PHP-FPM
+location ~* \.php$ {
+    fastcgi_index   index.php;
+    fastcgi_pass    127.0.0.1:9000;
+    #fastcgi_pass   unix:/var/run/php-fpm/php-fpm.sock;
+    include         fastcgi_params;
+    fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+    fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+}" > /etc/nginx/default.d/php.conf
+
 
 
 # Start the services
