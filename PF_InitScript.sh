@@ -1,3 +1,4 @@
+
 #!/bin/sh
 
 # To install the Stackdriver monitoring agent:
@@ -8,30 +9,38 @@ sudo bash install-monitoring-agent.sh
 curl -sSO https://dl.google.com/cloudagents/install-logging-agent.sh
 sudo bash install-logging-agent.sh
 
+# Add custom repos
+sudo yum -y install epel-release
+sudo import_epel_key
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+sudo rpm --import /etc/pki/rpm-gpg/IUS-COMMUNITY-GPG-KEY
+
 # Update the system
-yum update -y
+sudo yum update -y
 
 # Install my standard security utils
-yum install -y libselinux libselinux-utils libselinux-utils selinux-policy-minimum selinux-policy-mls selinux-policy-targeted policycoreutils
+sudo yum install -y libselinux libselinux-utils libselinux-utils selinux-policy-minimum selinux-policy-mls selinux-policy-targeted policycoreutils
 
 # Install the web tools and required packages
-yum install -y yum-cron nginx php70-fpm php70-pecl-yaml
+sudo yum install -y yum-cron nginx php72u-fpm php72u-pecl-yaml
 
 # Enable the services
-chkconfig nginx on
-chkconfig php-fpm on
+sudo systemctl enable nginx.service
+sudo systemctl enable php-fpm.service
 
 # Install default tooling
-yum install -y nano wget unzip
+sudo yum install -y nano wget unzip
 
 # Download healthcheck and enable
+cd ~
 curl -sSO https://github.com/fregster/PHPHealthcheck/archive/master.zip
-mkdir healthcheck && mv ./master.zip ./healthcheck
+rm -rf ~/healthcheck
+mkdir healthcheck
+mv ./master.zip ./healthcheck
 cd healthcheck && unzip master.zip
 cd ~
 
 
 # Start the services
-systemctl nginx restart
-systemctl php-fpm restart
-
+sudo systemctl restart nginx
+sudo systemctl restart php-fpm
