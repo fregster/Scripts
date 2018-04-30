@@ -21,6 +21,9 @@ yum install -y yum-cron nginx php70-fpm php70-pecl-yaml
 chkconfig nginx on
 chkconfig php-fpm on
 
+# Install default tooling
+yum install -y nano wget unzip
+
 # Download healthcheck and enable
 curl -sSO https://github.com/fregster/PHPHealthcheck/archive/master.zip
 mkdir healthcheck && mv ./master.zip ./healthcheck
