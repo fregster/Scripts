@@ -46,6 +46,10 @@ sudo rm /etc/nginx/default.d/php.conf
 sudo wget https://raw.githubusercontent.com/fregster/Scripts/master/php.conf
 sudo mv php.conf /etc/nginx/default.d/
 
+sudo chcon -R -t httpd_user_content_t /usr/share/nginx/html/
+
+# For testing only disable SELinux
+sudo setenforce 0
 
 # Start the services
 sudo systemctl restart nginx
