@@ -1,4 +1,4 @@
-sudo yum install -y git
+sudo yum install -y git php72u-pecl-memcached
 rm -rf git && mkdir git
 cd git
 git clone https://github.com/kbxkb/google-cloud-datastore-php.git
