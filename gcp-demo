@@ -11,5 +11,7 @@ sudo cp products.json /usr/share/nginx/html/
 cd ~
 cd /usr/share/nginx/html/ 
 sudo curl -sS https://getcomposer.org/installer | php
+sudo rm /usr/share/nginx/html/composer.json
+sudo cp /usr/share/nginx/composer.json /usr/share/nginx/html/
 sudo php composer.phar require google/auth
 sudo php composer.phar require google/cloud
