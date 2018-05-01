@@ -1,5 +1,6 @@
 sudo yum install -y git
-rm -rf git && mkdir git
+rm -rf git
+mkdir git
 cd git
 git clone https://github.com/kbxkb/google-cloud-datastore-php.git
 cd ~/git/google-cloud-datastore-php
