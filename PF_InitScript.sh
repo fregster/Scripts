@@ -21,7 +21,7 @@ sudo yum update -y
 sudo yum install -y libselinux libselinux-utils libselinux-utils selinux-policy-minimum selinux-policy-mls selinux-policy-targeted policycoreutils
 
 # Install the web tools and required packages
-sudo yum install -y yum-cron nginx php72u-fpm php72u-pdo php72u-json php72u-cli memcached
+sudo yum install -y yum-cron nginx php72u-fpm php72u-pdo php72u-json php72u-cli php72u-pecl-memcached memcached
 
 # Enable the services
 sudo systemctl enable nginx.service
