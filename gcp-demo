@@ -21,4 +21,4 @@ sudo php composer.phar require google/cloud
 sudo sed -i.bak s/'triple-cab-162115'/'leafy-computing-202717'/g /usr/share/nginx/html/loaddatastore.php
 sudo sed -i.bak s/'triple-cab-162115'/'leafy-computing-202717'/g /usr/share/nginx/html/calldatastore.php
 
-sudo echo "GOOGLE_APPLICATION_CREDENTIALS=/usr/share/nginx/serviceaccount.json" > /etc/enviroment
+sudo sh -c 'echo \"GOOGLE_APPLICATION_CREDENTIALS=/usr/share/nginx/serviceaccount.json\" > /etc/enviroment'
