@@ -1,7 +1,8 @@
 sudo yum install -y git
-rm -rf git
-mkdir git
-cd git
+cd ~
+rm -rf ~/git
+mkdir ~/git
+cd ~/git
 git clone https://github.com/kbxkb/google-cloud-datastore-php.git
 cd ~/git/google-cloud-datastore-php
 sudo cp calldatastore.php /usr/share/nginx/html/
