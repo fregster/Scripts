@@ -1,4 +1,4 @@
-sudo yum install -y git php72u-pecl-memcached
+sudo yum install -y git
 rm -rf git && mkdir git
 cd git
 git clone https://github.com/kbxkb/google-cloud-datastore-php.git
@@ -15,3 +15,6 @@ sudo rm /usr/share/nginx/html/composer.json
 sudo cp /usr/share/nginx/composer.json /usr/share/nginx/html/
 sudo php composer.phar require google/auth
 sudo php composer.phar require google/cloud
+
+sudo sed -i.bak s/'triple-cab-162115'/'leafy-computing-202717'/g /usr/share/nginx/html/loaddatastore.php
+sudo sed -i.bak s/'triple-cab-162115'/'leafy-computing-202717'/g /usr/share/nginx/html/calldatastore.php
